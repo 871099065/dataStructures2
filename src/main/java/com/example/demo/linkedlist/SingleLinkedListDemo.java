@@ -43,6 +43,7 @@ public class SingleLinkedListDemo {
         System.out.println("反转后显示：");
         rerversetList( singleLinkedList.getHead() );
         singleLinkedList.list();
+        System.out.println("测试~~~~~~~~~~~~~~~~");
     }
 
     /**
