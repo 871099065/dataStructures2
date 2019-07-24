@@ -39,6 +39,10 @@ public class SingleLinkedListDemo {
 
         //测试一下倒数第k的节点是
         System.out.println("倒数第k的节点是:"+ findLastIndexNode( singleLinkedList.getHead(),4));
+
+        System.out.println("反转后显示：");
+        rerversetList( singleLinkedList.getHead() );
+        singleLinkedList.list();
     }
 
     /**
@@ -49,8 +53,26 @@ public class SingleLinkedListDemo {
         if(herd.next==null||herd.next.next==null){
             return ;
         }
+        //定义一个辅助的指针（变量），帮助我们遍历原来的链表
+        //先暂时保存当前节点的下一个节点，因为后面需要使用
+        HeroNode cur=herd.next;
+        //指向当前节点[cur]的下一个节点
+        HeroNode next=null;
+        HeroNode rerverseHead= new HeroNode( 0,"","" );
+        //遍历原来的链表，每遍历一个节点，就将其取出，并放在新的链表rerverseHead的最前端
+        while (cur!=null){
+        //先暂时保存当前节点的下一个节点，因为后面需要使用
+            next=cur.next;
+            //将cur下一个节点指向新链表的最前端
+            cur.next=rerverseHead.next;
+            //将cur连接到新链表上
+            rerverseHead.next=cur;
+            //cur后移
+            cur=next;
 
-
+        }
+        //将head.next指向rerverseHead.next,实现链表的反转
+        herd.next=rerverseHead.next;
     }
 
     /**
